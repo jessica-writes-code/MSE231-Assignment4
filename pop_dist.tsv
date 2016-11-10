@@ -1,0 +1,257 @@
+sex	age	race	education	N
+female	18-24	black	college degree	257088
+female	18-24	black	high school graduate	1704160
+female	18-24	black	no high school diploma	301459
+female	18-24	black	postgraduate degree	10540
+female	18-24	hispanic	college degree	369468
+female	18-24	hispanic	high school graduate	2313494
+female	18-24	hispanic	no high school diploma	544668
+female	18-24	hispanic	postgraduate degree	14675
+female	18-24	other	college degree	314770
+female	18-24	other	high school graduate	986609
+female	18-24	other	no high school diploma	137789
+female	18-24	other	postgraduate degree	31173
+female	18-24	white	college degree	1700596
+female	18-24	white	high school graduate	5736537
+female	18-24	white	no high school diploma	769647
+female	18-24	white	postgraduate degree	85937
+female	25-29	black	college degree	395097
+female	25-29	black	high school graduate	935168
+female	25-29	black	no high school diploma	133448
+female	25-29	black	postgraduate degree	79066
+female	25-29	hispanic	college degree	511375
+female	25-29	hispanic	high school graduate	1154856
+female	25-29	hispanic	no high school diploma	375041
+female	25-29	hispanic	postgraduate degree	87560
+female	25-29	other	college degree	487753
+female	25-29	other	high school graduate	369873
+female	25-29	other	no high school diploma	62091
+female	25-29	other	postgraduate degree	214949
+female	25-29	white	college degree	2645025
+female	25-29	white	high school graduate	2515690
+female	25-29	white	no high school diploma	304086
+female	25-29	white	postgraduate degree	712999
+female	30-39	black	college degree	779371
+female	30-39	black	high school graduate	1500403
+female	30-39	black	no high school diploma	257656
+female	30-39	black	postgraduate degree	285693
+female	30-39	hispanic	college degree	850299
+female	30-39	hispanic	high school graduate	1956998
+female	30-39	hispanic	no high school diploma	1169161
+female	30-39	hispanic	postgraduate degree	243119
+female	30-39	other	college degree	863636
+female	30-39	other	high school graduate	624929
+female	30-39	other	no high school diploma	137530
+female	30-39	other	postgraduate degree	543846
+female	30-39	white	college degree	4642938
+female	30-39	white	high school graduate	4587005
+female	30-39	white	no high school diploma	553462
+female	30-39	white	postgraduate degree	2074012
+female	40-44	black	college degree	379156
+female	40-44	black	high school graduate	721956
+female	40-44	black	no high school diploma	121050
+female	40-44	black	postgraduate degree	161357
+female	40-44	hispanic	college degree	380018
+female	40-44	hispanic	high school graduate	849412
+female	40-44	hispanic	no high school diploma	620538
+female	40-44	hispanic	postgraduate degree	111464
+female	40-44	other	college degree	413771
+female	40-44	other	high school graduate	319440
+female	40-44	other	no high school diploma	100399
+female	40-44	other	postgraduate degree	219095
+female	40-44	white	college degree	2211034
+female	40-44	white	high school graduate	2446785
+female	40-44	white	no high school diploma	286157
+female	40-44	white	postgraduate degree	953010
+female	45-49	black	college degree	349230
+female	45-49	black	high school graduate	727097
+female	45-49	black	no high school diploma	142027
+female	45-49	black	postgraduate degree	134244
+female	45-49	hispanic	college degree	312320
+female	45-49	hispanic	high school graduate	742560
+female	45-49	hispanic	no high school diploma	555550
+female	45-49	hispanic	postgraduate degree	100667
+female	45-49	other	college degree	323417
+female	45-49	other	high school graduate	323619
+female	45-49	other	no high school diploma	111319
+female	45-49	other	postgraduate degree	163199
+female	45-49	white	college degree	2290412
+female	45-49	white	high school graduate	2935475
+female	45-49	white	no high school diploma	341385
+female	45-49	white	postgraduate degree	952186
+female	50-59	black	college degree	644738
+female	50-59	black	high school graduate	1575521
+female	50-59	black	no high school diploma	350165
+female	50-59	black	postgraduate degree	234967
+female	50-59	hispanic	college degree	471061
+female	50-59	hispanic	high school graduate	1184746
+female	50-59	hispanic	no high school diploma	935305
+female	50-59	hispanic	postgraduate degree	140624
+female	50-59	other	college degree	538613
+female	50-59	other	high school graduate	635371
+female	50-59	other	no high school diploma	261573
+female	50-59	other	postgraduate degree	213316
+female	50-59	white	college degree	4819887
+female	50-59	white	high school graduate	7761819
+female	50-59	white	no high school diploma	887280
+female	50-59	white	postgraduate degree	1816280
+female	60-64	black	college degree	223743
+female	60-64	black	high school graduate	641391
+female	60-64	black	no high school diploma	168233
+female	60-64	black	postgraduate degree	106654
+female	60-64	hispanic	college degree	134314
+female	60-64	hispanic	high school graduate	417569
+female	60-64	hispanic	no high school diploma	383650
+female	60-64	hispanic	postgraduate degree	50981
+female	60-64	other	college degree	204528
+female	60-64	other	high school graduate	261680
+female	60-64	other	no high school diploma	148730
+female	60-64	other	postgraduate degree	68677
+female	60-64	white	college degree	2072438
+female	60-64	white	high school graduate	3742492
+female	60-64	white	no high school diploma	437483
+female	60-64	white	postgraduate degree	994931
+female	65+	black	college degree	325859
+female	65+	black	high school graduate	1281272
+female	65+	black	no high school diploma	727127
+female	65+	black	postgraduate degree	179292
+female	65+	hispanic	college degree	196941
+female	65+	hispanic	high school graduate	762997
+female	65+	hispanic	no high school diploma	1101558
+female	65+	hispanic	postgraduate degree	73762
+female	65+	other	college degree	370056
+female	65+	other	high school graduate	565745
+female	65+	other	no high school diploma	455843
+female	65+	other	postgraduate degree	138523
+female	65+	white	college degree	3875766
+female	65+	white	high school graduate	12072178
+female	65+	white	no high school diploma	2518668
+female	65+	white	postgraduate degree	2035462
+male	18-24	black	college degree	154708
+male	18-24	black	high school graduate	1710904
+male	18-24	black	no high school diploma	445619
+male	18-24	black	postgraduate degree	6785
+male	18-24	hispanic	college degree	259928
+male	18-24	hispanic	high school graduate	2443441
+male	18-24	hispanic	no high school diploma	770260
+male	18-24	hispanic	postgraduate degree	7057
+male	18-24	other	college degree	248421
+male	18-24	other	high school graduate	1052938
+male	18-24	other	no high school diploma	185545
+male	18-24	other	postgraduate degree	28970
+male	18-24	white	college degree	1306976
+male	18-24	white	high school graduate	6346000
+male	18-24	white	no high school diploma	1050713
+male	18-24	white	postgraduate degree	48920
+male	25-29	black	college degree	288367
+male	25-29	black	high school graduate	927543
+male	25-29	black	no high school diploma	203144
+male	25-29	black	postgraduate degree	36111
+male	25-29	hispanic	college degree	407002
+male	25-29	hispanic	high school graduate	1302548
+male	25-29	hispanic	no high school diploma	570074
+male	25-29	hispanic	postgraduate degree	52429
+male	25-29	other	college degree	427706
+male	25-29	other	high school graduate	420896
+male	25-29	other	no high school diploma	73357
+male	25-29	other	postgraduate degree	176938
+male	25-29	white	college degree	2320208
+male	25-29	white	high school graduate	3177853
+male	25-29	white	no high school diploma	407454
+male	25-29	white	postgraduate degree	463689
+male	30-39	black	college degree	527620
+male	30-39	black	high school graduate	1537188
+male	30-39	black	no high school diploma	334310
+male	30-39	black	postgraduate degree	147332
+male	30-39	hispanic	college degree	686811
+male	30-39	hispanic	high school graduate	2127114
+male	30-39	hispanic	no high school diploma	1510561
+male	30-39	hispanic	postgraduate degree	166587
+male	30-39	other	college degree	683534
+male	30-39	other	high school graduate	653246
+male	30-39	other	no high school diploma	131773
+male	30-39	other	postgraduate degree	503928
+male	30-39	white	college degree	4077347
+male	30-39	white	high school graduate	5710108
+male	30-39	white	no high school diploma	795506
+male	30-39	white	postgraduate degree	1480906
+male	40-44	black	college degree	258025
+male	40-44	black	high school graduate	746057
+male	40-44	black	no high school diploma	144138
+male	40-44	black	postgraduate degree	85240
+male	40-44	hispanic	college degree	296709
+male	40-44	hispanic	high school graduate	912431
+male	40-44	hispanic	no high school diploma	729518
+male	40-44	hispanic	postgraduate degree	92163
+male	40-44	other	college degree	306507
+male	40-44	other	high school graduate	297016
+male	40-44	other	no high school diploma	85291
+male	40-44	other	postgraduate degree	226724
+male	40-44	white	college degree	1905777
+male	40-44	white	high school graduate	2860799
+male	40-44	white	no high school diploma	406236
+male	40-44	white	postgraduate degree	793684
+male	45-49	black	college degree	236137
+male	45-49	black	high school graduate	750440
+male	45-49	black	no high school diploma	153330
+male	45-49	black	postgraduate degree	79655
+male	45-49	hispanic	college degree	237483
+male	45-49	hispanic	high school graduate	774300
+male	45-49	hispanic	no high school diploma	663242
+male	45-49	hispanic	postgraduate degree	82146
+male	45-49	other	college degree	256702
+male	45-49	other	high school graduate	277425
+male	45-49	other	no high school diploma	89786
+male	45-49	other	postgraduate degree	181629
+male	45-49	white	college degree	1990143
+male	45-49	white	high school graduate	3198481
+male	45-49	white	no high school diploma	481788
+male	45-49	white	postgraduate degree	864644
+male	50-59	black	college degree	443643
+male	50-59	black	high school graduate	1427307
+male	50-59	black	no high school diploma	408874
+male	50-59	black	postgraduate degree	150008
+male	50-59	hispanic	college degree	386905
+male	50-59	hispanic	high school graduate	1153246
+male	50-59	hispanic	no high school diploma	1009601
+male	50-59	hispanic	postgraduate degree	130032
+male	50-59	other	college degree	409382
+male	50-59	other	high school graduate	561536
+male	50-59	other	no high school diploma	214865
+male	50-59	other	postgraduate degree	264370
+male	50-59	white	college degree	4113162
+male	50-59	white	high school graduate	7793025
+male	50-59	white	no high school diploma	1202045
+male	50-59	white	postgraduate degree	1753181
+male	60-64	black	college degree	171851
+male	60-64	black	high school graduate	531977
+male	60-64	black	no high school diploma	174258
+male	60-64	black	postgraduate degree	62161
+male	60-64	hispanic	college degree	129386
+male	60-64	hispanic	high school graduate	350023
+male	60-64	hispanic	no high school diploma	352969
+male	60-64	hispanic	postgraduate degree	50021
+male	60-64	other	college degree	164292
+male	60-64	other	high school graduate	213402
+male	60-64	other	no high school diploma	89991
+male	60-64	other	postgraduate degree	89687
+male	60-64	white	college degree	1938128
+male	60-64	white	high school graduate	3415249
+male	60-64	white	no high school diploma	493387
+male	60-64	white	postgraduate degree	992819
+male	65+	black	college degree	228236
+male	65+	black	high school graduate	844672
+male	65+	black	no high school diploma	476594
+male	65+	black	postgraduate degree	128158
+male	65+	hispanic	college degree	185761
+male	65+	hispanic	high school graduate	564450
+male	65+	hispanic	no high school diploma	767606
+male	65+	hispanic	postgraduate degree	92136
+male	65+	other	college degree	307974
+male	65+	other	high school graduate	393571
+male	65+	other	no high school diploma	242201
+male	65+	other	postgraduate degree	203852
+male	65+	white	college degree	3926134
+male	65+	white	high school graduate	8040843
+male	65+	white	no high school diploma	1919673
+male	65+	white	postgraduate degree	2711899
