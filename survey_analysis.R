@@ -2,6 +2,7 @@ library(plyr)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(nnet)
 
 survey_results <- read.csv("survey_real_results.csv")
 pmus_df <- read.csv("pop_dist.tsv", sep = "\t")
@@ -115,14 +116,23 @@ table(survey_results$Answer.Political)
 table(survey_results$Answer.Automation)
 table(survey_results$Answer.Universal)
 
-prop.table(table(survey_results$Answer.Education, survey_results$Answer.Political),1)
-
 # Automation answer by demo
 prop.table(table(survey_results$Answer.Age, survey_results$Answer.Automation),1)
 prop.table(table(survey_results$Answer.Race, survey_results$Answer.Automation),1)
 prop.table(table(survey_results$Answer.Gender, survey_results$Answer.Automation),1)
 prop.table(table(survey_results$Answer.Education, survey_results$Answer.Automation),1)
+edu_auto_df <- data.frame(prop.table(table(survey_results$Answer.Education, survey_results$Answer.Automation),1))
 prop.table(table(survey_results$Answer.Political, survey_results$Answer.Automation),1)
+
+names(edu_auto_df) <- c("demographic","answer","proportion")
+edu_auto_df$demographic <- factor(edu_auto_df$demographic, 
+                                 levels = c("no high school diploma","high school graduate","college degree","postgraduate degree"), 
+                                 labels = c("No HS Diploma","HS Graduate","College Grad","Post-Grad"), ordered=TRUE)
+ggplot(edu_auto_df, aes(x = answer, y = proportion, fill = demographic)) +
+  geom_bar(stat = "Identity", position = "dodge") +
+  theme(legend.position = "bottom") +
+  labs(x = "Do you think automation/AI will eliminate your job?", y = "Proportion", fill = "")
+ggsave("Edu_Auto_Dist.pdf", width = 6, heigh = 5)
 
 # UBI by demo
 prop.table(table(survey_results$Answer.Age, survey_results$Answer.Universal),1)
@@ -130,3 +140,53 @@ prop.table(table(survey_results$Answer.Race, survey_results$Answer.Universal),1)
 prop.table(table(survey_results$Answer.Gender, survey_results$Answer.Universal),1)
 prop.table(table(survey_results$Answer.Education, survey_results$Answer.Universal),1)
 prop.table(table(survey_results$Answer.Political, survey_results$Answer.Universal),1)
+
+# UBI vs. Auto
+prop.table(table(survey_results$Answer.Automation, survey_results$Answer.Universal),1)
+
+###########################
+# Statistical Adjustments #
+###########################
+## Adjust survey data & renormalize
+pmus_df <- filter(pmus_df, education != "no high school diploma")
+pmus_df$pop_prop <- pmus_df$N/sum(pmus_df$N)
+
+## Pairwise Combinations of Factors
+ages <- unique(survey_results$Answer.Age)
+genders <- unique(survey_results$Answer.Gender)
+races <- unique(survey_results$Answer.Race)
+educations <- unique(survey_results$Answer.Education)
+
+combos_df <- expand.grid(ages, genders, races, educations)
+names(combos_df) <- c("age","sex","race","education")
+names(survey_results)[28:34] <- c("age","automation","education","sex","political","race","universal")
+
+## Automation
+automation_model <- multinom(automation ~ sex + age + race + education, data=survey_results)
+automation_predictions <- predict(automation_model, newdata = combos_df, type="probs")
+automation_df <- cbind(combos_df, automation_predictions)
+
+### Weight by survey data
+automation_weights_df <- merge(pmus_df, automation_df)
+automation_weights_df$weight_no <- automation_weights_df$No * automation_weights_df$pop_prop
+automation_weights_df$weight_unsure <- automation_weights_df$Unsure * automation_weights_df$pop_prop
+automation_weights_df$weight_yes <- automation_weights_df$Yes * automation_weights_df$pop_prop
+
+automation_adj <- c(sum(automation_weights_df$weight_yes), sum(automation_weights_df$weight_unsure), sum(automation_weights_df$weight_no))
+names(automation_adj) <- c("Yes","Unsure","No")
+automation_adj
+
+## UBI
+ubi_model <- multinom(universal ~ sex + age + race + education, data=survey_results)
+ubi_predictions <- predict(ubi_model, newdata = combos_df, type="probs")
+ubi_df <- cbind(combos_df, ubi_predictions)
+
+### Weight by survey data
+ubi_weights_df <- merge(pmus_df, ubi_df)
+ubi_weights_df$weight_no <- ubi_weights_df$No * ubi_weights_df$pop_prop
+ubi_weights_df$weight_unsure <- ubi_weights_df$Unsure * ubi_weights_df$pop_prop
+ubi_weights_df$weight_yes <- ubi_weights_df$Yes * ubi_weights_df$pop_prop
+
+ubi_adj <- c(sum(ubi_weights_df$weight_yes), sum(ubi_weights_df$weight_unsure), sum(ubi_weights_df$weight_no))
+names(ubi_adj) <- c("Yes","Unsure","No")
+ubi_adj
