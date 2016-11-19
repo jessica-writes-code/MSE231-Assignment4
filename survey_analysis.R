@@ -177,7 +177,7 @@ auto_univ_df$ubi <- factor(auto_univ_df$ubi,
 ggplot(auto_univ_df, aes(x = ubi, y = proportion, fill = auto)) +
   geom_bar(stat = "Identity", position = "dodge") +
   theme(legend.position = "bottom") +
-  labs(x = "Would you support a policy of Universal Basic Income?", y = "Proportion", fill = "Automation/AI Response")
+  labs(x = "Would you support a policy of Universal Basic Income?", y = "Proportion", fill = "Automation/AI Concern?")
 ggsave("Auto_Univ_Dist.pdf", width = 6, heigh = 5)
 
 ###########################
