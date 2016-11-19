@@ -123,7 +123,9 @@ prop.table(table(survey_results$Answer.Gender, survey_results$Answer.Automation)
 prop.table(table(survey_results$Answer.Education, survey_results$Answer.Automation),1)
 edu_auto_df <- data.frame(prop.table(table(survey_results$Answer.Education, survey_results$Answer.Automation),1))
 prop.table(table(survey_results$Answer.Political, survey_results$Answer.Automation),1)
+pol_auto_df <- data.frame(prop.table(table(survey_results$Answer.Political, survey_results$Answer.Automation),1))
 
+## Education-Automation Plot
 names(edu_auto_df) <- c("demographic","answer","proportion")
 edu_auto_df$demographic <- factor(edu_auto_df$demographic, 
                                  levels = c("no high school diploma","high school graduate","college degree","postgraduate degree"), 
@@ -133,6 +135,16 @@ ggplot(edu_auto_df, aes(x = answer, y = proportion, fill = demographic)) +
   theme(legend.position = "bottom") +
   labs(x = "Do you think automation/AI will eliminate your job?", y = "Proportion", fill = "")
 ggsave("Edu_Auto_Dist.pdf", width = 6, heigh = 5)
+
+## Political-Automation Plot
+names(pol_auto_df) <- c("demographic","answer","proportion")
+pol_auto_df$demographic <- factor(pol_auto_df$demographic, 
+                                  levels = c("Conservative","Moderate","Liberal"), ordered=TRUE)
+ggplot(pol_auto_df, aes(x = answer, y = proportion, fill = demographic)) +
+  geom_bar(stat = "Identity", position = "dodge") +
+  theme(legend.position = "bottom") +
+  labs(x = "Do you think automation/AI will eliminate your job?", y = "Proportion", fill = "")
+ggsave("Pol_Auto_Dist.pdf", width = 6, heigh = 5)
 
 # UBI by demo
 prop.table(table(survey_results$Answer.Age, survey_results$Answer.Universal),1)
