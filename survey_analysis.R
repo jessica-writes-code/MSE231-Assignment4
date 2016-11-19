@@ -152,9 +152,33 @@ prop.table(table(survey_results$Answer.Race, survey_results$Answer.Universal),1)
 prop.table(table(survey_results$Answer.Gender, survey_results$Answer.Universal),1)
 prop.table(table(survey_results$Answer.Education, survey_results$Answer.Universal),1)
 prop.table(table(survey_results$Answer.Political, survey_results$Answer.Universal),1)
+pol_univ_df <- data.frame(prop.table(table(survey_results$Answer.Political, survey_results$Answer.Universal),1))
+
+## Political-Universal Plot
+names(pol_univ_df) <- c("demographic","answer","proportion")
+pol_univ_df$demographic <- factor(pol_univ_df$demographic, 
+                                  levels = c("Conservative","Moderate","Liberal"), ordered=TRUE)
+ggplot(pol_univ_df, aes(x = answer, y = proportion, fill = demographic)) +
+  geom_bar(stat = "Identity", position = "dodge") +
+  theme(legend.position = "bottom") +
+  labs(x = "Would you support a policy of Universal Basic Income?", y = "Proportion", fill = "")
+ggsave("Pol_Univ_Dist.pdf", width = 6, heigh = 5)
 
 # UBI vs. Auto
 prop.table(table(survey_results$Answer.Automation, survey_results$Answer.Universal),1)
+auto_univ_df <- data.frame(prop.table(table(survey_results$Answer.Automation, survey_results$Answer.Universal),1))
+
+## Automation-Universal Plot
+names(auto_univ_df) <- c("auto","ubi","proportion")
+auto_univ_df$auto <- factor(auto_univ_df$auto, 
+                            levels = c("Yes","Unsure","No"), ordered=TRUE)
+auto_univ_df$ubi <- factor(auto_univ_df$ubi, 
+                            levels = c("Yes","Unsure","No"), ordered=TRUE)
+ggplot(auto_univ_df, aes(x = ubi, y = proportion, fill = auto)) +
+  geom_bar(stat = "Identity", position = "dodge") +
+  theme(legend.position = "bottom") +
+  labs(x = "Would you support a policy of Universal Basic Income?", y = "Proportion", fill = "Automation/AI Response")
+ggsave("Auto_Univ_Dist.pdf", width = 6, heigh = 5)
 
 ###########################
 # Statistical Adjustments #
