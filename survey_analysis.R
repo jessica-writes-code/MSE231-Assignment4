@@ -21,7 +21,7 @@ survey_results$Answer.Education <- mapvalues(survey_results$Answer.Education, fr
 
 ## Collapse data
 survey_results_agg <- group_by(survey_results, Answer.Age, Answer.Gender, Answer.Education, Answer.Race) %>%
-                        summarize(count=n())
+                                dplyr::summarize(count = n())
 
 ## Calculate proportions of survey and population
 survey_results_agg$proportion_of_pop <- survey_results_agg$count/sum(survey_results_agg$count)
@@ -48,7 +48,7 @@ theme_set(theme_bw())
 colors_for_plot <- gg_color_hue(4)
 
 # Age
-age_df <- group_by(joint_df, age) %>% summarize(pop_prop = sum(pop_prop), survey_prop = sum(survey_prop))
+age_df <- group_by(joint_df, age) %>% dplyr::summarize(pop_prop = sum(pop_prop), survey_prop = sum(survey_prop))
 age_df <- gather(age_df, source, proportion, pop_prop:survey_prop, factor_key=TRUE)
 ggplot(age_df, aes(x = age, y = proportion, fill = source, group = source)) +
   geom_bar(stat = "Identity", position="dodge") +
@@ -62,7 +62,7 @@ ggplot(age_df, aes(x = age, y = proportion, fill = source, group = source)) +
 ggsave("Age_Dist.pdf", width = 6, height = 5)
 
 # Gender
-gender_df <- group_by(joint_df, sex) %>% summarize(pop_prop = sum(pop_prop), survey_prop = sum(survey_prop))
+gender_df <- group_by(joint_df, sex) %>% dplyr::summarize(pop_prop = sum(pop_prop), survey_prop = sum(survey_prop))
 gender_df <- gather(gender_df, source, proportion, pop_prop:survey_prop, factor_key=TRUE)
 ggplot(gender_df, aes(x = sex, y = proportion, fill = source, group = source)) +
   geom_bar(stat = "Identity", position="dodge") +
@@ -77,7 +77,7 @@ ggplot(gender_df, aes(x = sex, y = proportion, fill = source, group = source)) +
 ggsave("Gender_Dist.pdf", width = 6, height = 5)
 
 # Race
-race_df <- group_by(joint_df, race) %>% summarize(pop_prop = sum(pop_prop), survey_prop = sum(survey_prop))
+race_df <- group_by(joint_df, race) %>% dplyr::summarize(pop_prop = sum(pop_prop), survey_prop = sum(survey_prop))
 race_df <- gather(race_df, source, proportion, pop_prop:survey_prop, factor_key=TRUE)
 ggplot(race_df, aes(x = race, y = proportion, fill = source, group = source)) +
   geom_bar(stat = "Identity", position="dodge") +
@@ -92,7 +92,7 @@ ggplot(race_df, aes(x = race, y = proportion, fill = source, group = source)) +
 ggsave("Race_Dist.pdf", width = 6, height = 5)
 
 # Education
-education_df <- group_by(joint_df, education) %>% summarize(pop_prop = sum(pop_prop), survey_prop = sum(survey_prop))
+education_df <- group_by(joint_df, education) %>% dplyr::summarize(pop_prop = sum(pop_prop), survey_prop = sum(survey_prop))
 education_df <- gather(education_df, source, proportion, pop_prop:survey_prop, factor_key=TRUE)
 education_df$education <- factor(education_df$education, 
                                  levels = c("no high school diploma","high school graduate","college degree","postgraduate degree"), 
