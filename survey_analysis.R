@@ -171,9 +171,9 @@ auto_univ_df <- data.frame(prop.table(table(survey_results$Answer.Automation, su
 ## Automation-Universal Plot
 names(auto_univ_df) <- c("auto","ubi","proportion")
 auto_univ_df$auto <- factor(auto_univ_df$auto, 
-                            levels = c("Yes","Unsure","No"), ordered=TRUE)
+                            levels = c("No","Unsure","Yes"), ordered=TRUE)
 auto_univ_df$ubi <- factor(auto_univ_df$ubi, 
-                            levels = c("Yes","Unsure","No"), ordered=TRUE)
+                            levels = c("No","Unsure","Yes"), ordered=TRUE)
 ggplot(auto_univ_df, aes(x = ubi, y = proportion, fill = auto)) +
   geom_bar(stat = "Identity", position = "dodge") +
   theme(legend.position = "bottom") +
