@@ -3,6 +3,9 @@ library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(nnet)
+library(reshape2)
+library(scales)
+theme_set(theme_bw())
 
 survey_results <- read.csv("survey_real_results.csv")
 pmus_df <- read.csv("pop_dist.tsv", sep = "\t")
@@ -31,6 +34,65 @@ pmus_df$pop_prop <- pmus_df$N/sum(pmus_df$N)
 names(survey_results_agg) <- c("age","sex","education","race","survey_count","survey_prop")
 joint_df <- merge(pmus_df, survey_results_agg, all = TRUE)
 joint_df$survey_prop <- ifelse(is.na(joint_df$survey_prop), 0, joint_df$survey_prop)
+
+# Proper caplitalization function
+capwords <- function(x) {
+  s <- strsplit(as.character(x), " ")[[1]]
+  paste(toupper(substring(s, 1, 1)), substring(s, 2),
+        sep = "", collapse = " ")
+}
+
+# Group by each demographic, and sum up the proportion
+# Then melt the data so future columns will be:
+## Demographic type
+## Demographic value
+## Survey/Pop type
+## Proportion of said Survey/Pop type
+demo.sex <- melt(melt(
+  data.frame(group_by(joint_df, sex) %>%
+               dplyr::summarize(pop_prop = sum(pop_prop), survey_prop = sum(survey_prop))),
+  id.vars=c('pop_prop', 'survey_prop')),
+  id.vars=(c('variable', 'value')))
+demo.race <- melt(melt(
+  data.frame(group_by(joint_df, race) %>%
+               dplyr::summarize(pop_prop = sum(pop_prop), survey_prop = sum(survey_prop))),
+  id.vars=c('pop_prop', 'survey_prop')),
+  id.vars=(c('variable', 'value')))
+demo.age <- melt(melt(
+  data.frame(group_by(joint_df, age) %>%
+               dplyr::summarize(pop_prop = sum(pop_prop), survey_prop = sum(survey_prop))),
+  id.vars=c('pop_prop', 'survey_prop')),
+  id.vars=(c('variable', 'value')))
+demo.edu <- melt(melt(
+  data.frame(group_by(joint_df, education) %>%
+               dplyr::summarize(pop_prop = sum(pop_prop), survey_prop = sum(survey_prop))),
+  id.vars=c('pop_prop', 'survey_prop')),
+  id.vars=(c('variable', 'value')))
+
+# Combine into one data frame for processing
+demographics <- rbind(demo.sex, demo.race, demo.age, demo.edu)
+
+names(demographics) <- c('demo_type', 'demo_value', 'source', 'prop')
+demographics$demo_type <- factor(sapply(demographics$demo_type, capwords),
+                                 levels = c('Sex', 'Race', 'Age', 'Education'))                          
+demographics$demo_value <- factor(sapply(demographics$demo_value, capwords),
+                                  levels = c('Male', 'Female',
+                                             'White', 'Black', 'Hispanic', 'Other',
+                                             '18-24', '25-29', '30-39', '40-44', '45-49', '50-59', '60-64', '65+',
+                                             'No High School Diploma', 'High School Graduate', 'College Degree', 'Postgraduate Degree'))
+levels(demographics$source) <- c('Population', 'Survey')
+
+ggplot(demographics, aes(x = demo_value, y = prop, fill = source, group = source)) +
+    geom_bar(stat = "Identity", position="dodge") +
+    facet_grid(. ~ demo_type, scales = "free_x", space = "free_x") +
+    scale_y_continuous(labels=percent, limits=c(0, 0.8)) +
+    ylab("Proportion") +
+    theme(legend.position = "bottom",
+          legend.title=element_blank(),
+          axis.text.x = element_text(angle = 45, hjust = 1),
+          axis.title.x = element_blank())
+
+ggsave("Demographics_Dist.pdf", width=6, height=5)
 
 # Compute and Plot Demographic Distributions
 ## Table
