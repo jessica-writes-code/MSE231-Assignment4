@@ -92,7 +92,7 @@ ggplot(demographics, aes(x = demo_value, y = prop, fill = source, group = source
           axis.text.x = element_text(angle = 45, hjust = 1),
           axis.title.x = element_blank())
 
-ggsave("Demographics_Dist.pdf", width=6, height=5)
+ggsave("Demographics_Dist.pdf", width=7, height=5)
 
 # Compute and Plot Demographic Distributions
 ## Table
